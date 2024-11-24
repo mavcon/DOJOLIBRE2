@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 5px;
+  }
+ 
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 210 40% 98%;
+    --card: 0 0% 0%;
+    --card-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Global input styling */
+  .form-group {
+    @apply relative;
+  }
+
+  .form-group label {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 dark:text-gray-400 transition-all duration-200 pointer-events-none;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    @apply w-full px-3 py-2 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-[5px] transition-all;
+    @apply focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500;
+    @apply dark:text-white;
+    @apply placeholder-transparent;
+  }
+
+  .form-group input:focus ~ label,
+  .form-group input:not(:placeholder-shown) ~ label,
+  .form-group textarea:focus ~ label,
+  .form-group textarea:not(:placeholder-shown) ~ label,
+  .form-group select:focus ~ label,
+  .form-group select:not(:placeholder-shown) ~ label {
+    @apply -top-2 left-2 text-xs bg-white dark:bg-black px-1;
+    @apply text-indigo-600 dark:text-indigo-400;
+  }
+}
+
+/* Navigation link styling */
+.nav-link {
+  @apply flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 transition-all duration-200;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  @apply text-indigo-600 dark:text-indigo-400;
+}
+
+.nav-link svg {
+  @apply transition-transform duration-200;
+}
+
+.nav-link:hover svg,
+.nav-link.active svg {
+  @apply scale-110;
+}
+
+/* Header icons styling */
+.header-icon {
+  @apply transition-all duration-200 hover:scale-110 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400;
+}
+
+/* Transition animations */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.group-hover\:fade-out {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.group-hover\:fade-in {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
